@@ -1,0 +1,47 @@
+#+TITLE: Auto-multiple-choice exporter for Org
+
+=ox-amc= is a rudimentary exporter for [[https://www.auto-multiple-choice.net/][auto-multiple-choice]], rendering
+Org documents as AMC question sets.  It isn't meant as a one-stop
+solution for writing AMC questionnaires in Org, but rather as a way to
+use the simplified Org syntax instead of writing directly in AMC's
+especially heavy brand of LaTeX.
+
+Because most input gets ignored, the following README can be exported
+with ox-amc.  All text like this will be dropped from the output.
+What follows is a set of sample questions, which you can open and
+export with ox-amc.
+
+Questions are numbered, top-level lists like this.  Answers are a
+level-2 bullet list.  Any bullet will do.
+
+ 1. Is this the first question?
+    - True
+    - False
+    - Erm, maybe?
+
+Notice how we didn't mark answers as valid or invalid.  *Default rule
+of =ox-amc= is: the first answer as correct, all others as incorrect.*
+In the example above, “True” is the only correct answer.
+
+This question, though, has multiple valid answers:
+
+ 2. This is the second question.
+    - Two is an even number. ((+))
+    - This is indeed the second question. ((+))
+    - Two is a prime number. ((+))
+    - Two is an odd number.
+
+=((+))= marks a correct answer.  =((-))= can be used to mark an answer
+as incorrect.  *Second rule: if an answer has a mark, all unmarked
+answers are incorrect.*.  Those marks can be customized, see the
+=ox-amc-marks= custom group.
+
+ 1. This question has only one correct answer.
+    - This is incorrect.
+    - This is correct ((+))
+
+ 1. This question has *zero* correct answers.
+    - This is incorrect.
+    - This is incorrect ((-))
+
+* First group of questions
